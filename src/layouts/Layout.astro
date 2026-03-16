@@ -21,6 +21,11 @@ const { title, description } = Astro.props
     <meta property="og:url" content="https://konbu.codenica.dev" />
     <meta property="og:image" content="https://konbu.codenica.dev/hero.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://konbu.codenica.dev/hero.png" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="konbu" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
