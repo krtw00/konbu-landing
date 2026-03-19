@@ -1,24 +1,49 @@
-name: Deploy
+name: Deploy to Firebase Hosting
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: konbu-landing-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    env:
+      GOOGLE_CLOUD_PROJECT: ${{ vars.GOOGLE_CLOUD_PROJECT || 'oauthsetting-484201' }}
+      GOOGLE_CLOUD_REGION: ${{ vars.GOOGLE_CLOUD_REGION || 'asia-northeast1' }}
 
-      - uses: actions/setup-node@v4
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
 
-      - run: npm ci
-      - run: npm run build
+      - name: Install dependencies
+        run: npm ci
 
-      - uses: cloudflare/wrangler-action@v3
+      - name: Build site
+        run: npm run build
+
+      - id: auth
+        uses: google-github-actions/auth@v2
         with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: 7a4bdd42ddce5841858a7d6fe6119430
-          command: pages deploy dist --project-name=konbu-landing
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          create_credentials_file: true
+
+      - uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.GOOGLE_CLOUD_PROJECT }}
+
+      - name: Deploy to Firebase Hosting
+        run: npm run firebase:deploy
