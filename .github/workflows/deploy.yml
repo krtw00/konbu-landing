@@ -2,7 +2,7 @@ name: Deploy to Firebase Hosting
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   workflow_dispatch:
 
 concurrency:
@@ -15,10 +15,12 @@ permissions:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main' || (github.ref == 'refs/heads/staging' && vars.ENABLE_STAGING == 'true')
     runs-on: ubuntu-latest
     env:
       GOOGLE_CLOUD_PROJECT: ${{ vars.GOOGLE_CLOUD_PROJECT || 'oauthsetting-484201' }}
       GOOGLE_CLOUD_REGION: ${{ vars.GOOGLE_CLOUD_REGION || 'asia-northeast1' }}
+      FIREBASE_HOSTING_SITE: ${{ github.ref == 'refs/heads/staging' && (vars.STAGING_FIREBASE_HOSTING_SITE || 'konbu-landing-staging') || (vars.FIREBASE_HOSTING_SITE || 'konbu-landing') }}
 
     steps:
       - uses: actions/checkout@v5
@@ -47,3 +49,5 @@ jobs:
 
       - name: Deploy to Firebase Hosting
         run: npm run firebase:deploy
+        env:
+          FIREBASE_HOSTING_SITE: ${{ env.FIREBASE_HOSTING_SITE }}
