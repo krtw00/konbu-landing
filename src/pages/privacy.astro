@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+---
+
+<Layout
+  title="プライバシーポリシー | konbu"
+  description="konbu のプライバシーポリシーです。収集する情報、利用目的、保存と削除について説明します。"
+  path="/privacy"
+>
+  <SiteHeader />
+
+  <main class="px-6 pb-20 pt-32">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="text-4xl font-bold" style="color: #1A3A34;">プライバシーポリシー</h1>
+      <div class="mt-10 space-y-10 text-sm leading-7" style="color: #587D75;">
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">1. 対象</h2>
+          <p class="mt-3">
+            本ポリシーは、konbu のウェブサイト、クラウド版アプリ、および関連サポートフォームの利用に適用されます。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">2. 収集する情報</h2>
+          <p class="mt-3">
+            アカウント作成時のメールアドレスと表示名、アプリ上で作成したメモ・ToDo・予定・リンク、サポート送信内容、
+            利用状況に関する基本的なログを収集する場合があります。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">3. 利用目的</h2>
+          <p class="mt-3">
+            サービス提供、認証、データ保存、サポート対応、不正利用防止、機能改善のために情報を利用します。
+            有料プランを利用する場合、決済処理と請求管理のために必要な情報が決済プロバイダに共有されることがあります。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">4. 第三者サービス</h2>
+          <p class="mt-3">
+            決済、認証、ホスティング、ストレージ、AI API などの外部サービスを利用することがあります。
+            それらのサービスは、それぞれの規約とプライバシーポリシーに基づいて情報を処理します。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">5. データの管理</h2>
+          <p class="mt-3">
+            アカウント情報とワークスペースデータは、サービス提供に必要な期間保存されます。
+            アカウント削除またはサポートへの依頼により、合理的な範囲で削除対応を行います。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">6. お問い合わせ</h2>
+          <p class="mt-3">
+            個人情報に関する問い合わせは
+            <a href="/contact" class="underline-offset-4 hover:underline" style="color: #1A3A34;">お問い合わせページ</a>
+            から受け付けます。
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <SiteFooter />
+</Layout>
