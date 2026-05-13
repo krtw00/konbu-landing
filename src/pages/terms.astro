@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+---
+
+<Layout
+  title="利用規約 | konbu"
+  description="konbu の利用規約です。アカウント、禁止事項、サービス変更、責任範囲を説明します。"
+  path="/terms"
+>
+  <SiteHeader />
+
+  <main class="px-6 pb-20 pt-32">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="text-4xl font-bold" style="color: #1A3A34;">利用規約</h1>
+      <div class="mt-10 space-y-10 text-sm leading-7" style="color: #587D75;">
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">1. サービス</h2>
+          <p class="mt-3">
+            konbu は、予定、メモ、ToDo、リンク、AI アシスタント機能を提供するオンラインソフトウェアです。
+            一部機能は無料で、一部機能は有料プランで提供されます。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">2. アカウント</h2>
+          <p class="mt-3">
+            利用者は、自身のアカウント情報を正確に保ち、認証情報を適切に管理する責任を負います。
+            不正アクセスやアカウントの不正利用が疑われる場合、利用停止または確認を求めることがあります。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">3. 禁止事項</h2>
+          <p class="mt-3">
+            違法行為、他者の権利侵害、不正アクセス、スパム、マルウェア配布、決済やサービスの不正利用を禁止します。
+            第三者のための送金や決済代行目的での利用はできません。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">4. 有料プラン</h2>
+          <p class="mt-3">
+            有料プランは、アプリ内で案内されるプレミアム機能へのアクセス権を提供します。
+            料金、課金間隔、解約条件は購入前に表示されます。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">5. サービス変更と停止</h2>
+          <p class="mt-3">
+            機能改善、保守、法令対応のため、サービス内容を変更または停止する場合があります。
+            継続的な提供に努めますが、可用性を保証するものではありません。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">6. お問い合わせ</h2>
+          <p class="mt-3">
+            利用規約に関する問い合わせは
+            <a href="/contact" class="underline-offset-4 hover:underline" style="color: #1A3A34;">お問い合わせページ</a>
+            から受け付けます。
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <SiteFooter />
+</Layout>

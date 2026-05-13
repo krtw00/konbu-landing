@@ -1,175 +1,296 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+
+const paidFeatures = [
+  'AIアシスタント',
+  '画像添付',
+  'API / CLI / MCP 連携',
+  '自分の AI API キー設定',
+]
+
+const freeFeatures = [
+  'カレンダー',
+  'メモ',
+  'ToDo',
+  '横断検索',
+  'ブックマーク',
+]
 ---
 
-<Layout title="konbu — 電子版AI組み込みスケジュール帳" description="予定を軸に、メモやToDoも同じ場所で扱える。話しかければAIが検索・整理・登録までやる。">
-  <!-- Header -->
-  <header class="fixed top-0 w-full z-50 border-b bg-[#F2F8F7]/80 border-[#C4D9D5]/50 backdrop-blur-sm">
-    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/favicon.svg" alt="konbu" class="w-6 h-6" />
-        <span class="font-semibold text-lg" style="color: #1A3A34;">konbu</span>
-      </a>
-      <a href="https://konbu-cloud.codenica.dev" class="text-sm font-medium text-white px-4 py-1.5 rounded-md transition-colors" style="background-color: #0D9488;" onmouseover="this.style.backgroundColor='#0B7F74'" onmouseout="this.style.backgroundColor='#0D9488'">
-        無料で始める
-      </a>
-    </div>
-  </header>
+<Layout
+  title="konbu — CLI/MCP対応のAIプランナー"
+  description="Notion + Todoist + Calendar をひとつにまとめた、セルフホスト可能なAIプランナー。Claude/CursorからMCPで直接操作。無料プランと有料 konbu Pro。"
+  path="/"
+>
+  <SiteHeader />
 
-  <!-- Hero -->
-  <section class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-5" style="color: #1A3A34; word-break: keep-all; overflow-wrap: anywhere;">
-        電子版AI組み込み<br class="sm:hidden" />スケジュール帳
-      </h1>
-      <p class="text-lg mb-10 max-w-xl mx-auto" style="color: #8BACA5; word-break: keep-all; overflow-wrap: anywhere;">
-        予定を軸に、メモやToDoも同じ場所で扱える。<br />
-        話しかければAIが検索・整理・登録までやってくれる。
+  <section class="px-6 pb-20 pt-32">
+    <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em]" style="color: #0D9488;">
+          CLI · MCP · セルフホスト · AIネイティブ
+        </p>
+        <h1 class="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl" style="color: #1A3A34;">
+          開発者ツールのように
+          <br />
+          作られたオンライン手帳。
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8" style="color: #587D75;">
+          konbu は、Notion + Todoist + Calendar をひとつにまとめた、
+          セルフホスト可能なオンライン手帳です。
+          Claude、Cursor、その他のMCPクライアントから直接操作できる、OSS・AIネイティブな設計。
+          有料プラン
+          <strong style="color: #1A3A34;"> konbu Pro </strong>
+          ではAI機能・画像添付・API / CLI / MCP 連携が利用できます。
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="https://konbu-cloud.codenica.dev"
+            class="inline-flex items-center rounded-lg px-7 py-3 text-base font-medium text-white transition-colors"
+            style="background-color: #0D9488;"
+            onmouseover="this.style.backgroundColor='#0B7F74'"
+            onmouseout="this.style.backgroundColor='#0D9488'"
+          >
+            無料で始める
+          </a>
+          <a
+            href="#plans"
+            class="inline-flex items-center rounded-lg border px-7 py-3 text-base font-medium transition-colors hover:bg-white"
+            style="border-color: #C4D9D5; color: #1A3A34;"
+          >
+            プランを見る
+          </a>
+        </div>
+        <dl class="mt-8 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border p-4" style="border-color: #C4D9D5; background-color: #FAFFFE;">
+            <dt class="text-xs font-semibold uppercase tracking-[0.14em]" style="color: #8BACA5;">提供形態</dt>
+            <dd class="mt-2 text-sm font-medium" style="color: #1A3A34;">Web アプリ / SaaS</dd>
+          </div>
+          <div class="rounded-2xl border p-4" style="border-color: #C4D9D5; background-color: #FAFFFE;">
+            <dt class="text-xs font-semibold uppercase tracking-[0.14em]" style="color: #8BACA5;">無料プラン</dt>
+            <dd class="mt-2 text-sm font-medium" style="color: #1A3A34;">あり</dd>
+          </div>
+          <div class="rounded-2xl border p-4" style="border-color: #C4D9D5; background-color: #FAFFFE;">
+            <dt class="text-xs font-semibold uppercase tracking-[0.14em]" style="color: #8BACA5;">決済の用途</dt>
+            <dd class="mt-2 text-sm font-medium" style="color: #1A3A34;">Pro 機能の利用料金</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="grid gap-6">
+        <img src="/hero-chat.png" alt="konbu AI アシスタント画面" class="rounded-[28px] shadow-xl" style="border: 1px solid #C4D9D5;" />
+        <img src="/hero.png" alt="konbu のカレンダーとワークスペース" class="rounded-[28px] shadow-xl" style="border: 1px solid #C4D9D5;" />
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-16" style="background-color: #FAFFFE;">
+    <div class="mx-auto max-w-6xl rounded-[32px] border p-8 sm:p-10" style="border-color: #C4D9D5;">
+      <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: #0D9488;">販売しているもの</p>
+          <h2 class="mt-3 text-3xl font-bold" style="color: #1A3A34;">デジタル機能へのアクセスを販売しています</h2>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl p-5" style="background-color: #F2F8F7;">
+            <h3 class="font-semibold" style="color: #1A3A34;">対象サービス</h3>
+            <p class="mt-2 text-sm leading-6" style="color: #587D75;">
+              konbu Free と konbu Pro。どちらもオンラインで提供するソフトウェアです。
+            </p>
+          </div>
+          <div class="rounded-2xl p-5" style="background-color: #F2F8F7;">
+            <h3 class="font-semibold" style="color: #1A3A34;">決済の性質</h3>
+            <p class="mt-2 text-sm leading-6" style="color: #587D75;">
+              寄付やチップではなく、定義されたプレミアム機能の利用料金です。
+            </p>
+          </div>
+          <div class="rounded-2xl p-5" style="background-color: #F2F8F7;">
+            <h3 class="font-semibold" style="color: #1A3A34;">提供内容</h3>
+            <p class="mt-2 text-sm leading-6" style="color: #587D75;">
+              AIチャット、画像添付、API / CLI / MCP 連携など、アプリ内機能へのアクセスを提供します。
+            </p>
+          </div>
+          <div class="rounded-2xl p-5" style="background-color: #F2F8F7;">
+            <h3 class="font-semibold" style="color: #1A3A34;">含まれないもの</h3>
+            <p class="mt-2 text-sm leading-6" style="color: #587D75;">
+              第三者のための決済代行、送金、クラウドファンディング、慈善寄付の受付は行いません。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="px-6 py-24">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="text-center text-3xl font-bold" style="color: #1A3A34;">主要機能</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-base leading-7" style="color: #587D75;">
+        スケジュールを中心に据えながら、メモやタスクを別アプリに散らさず扱える構成です。
       </p>
-      <div class="flex justify-center gap-3">
-        <a href="https://konbu-cloud.codenica.dev" class="inline-flex items-center font-medium text-white px-7 py-3 rounded-lg transition-colors text-base" style="background-color: #0D9488;" onmouseover="this.style.backgroundColor='#0B7F74'" onmouseout="this.style.backgroundColor='#0D9488'">
-          無料で始める
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-[28px] border p-8 sm:col-span-2 lg:col-span-3" style="background-color: #FAFFFE; border-color: #0D9488;">
+          <h3 class="text-lg font-semibold" style="color: #1A3A34;">AIアシスタント</h3>
+          <p class="mt-3 text-sm leading-7" style="color: #587D75;">
+            「明日の予定を見せて」「このメモを探して」「来週の空きに予定を入れて」と自然文で操作できます。
+          </p>
+        </div>
+        <div class="rounded-[28px] border p-8" style="background-color: #FAFFFE; border-color: #C4D9D5;">
+          <h3 class="text-lg font-semibold" style="color: #1A3A34;">カレンダー</h3>
+          <p class="mt-3 text-sm leading-7" style="color: #587D75;">月表示を軸に予定を管理。毎日の確認と登録がひとつの画面で完結します。</p>
+        </div>
+        <div class="rounded-[28px] border p-8" style="background-color: #FAFFFE; border-color: #C4D9D5;">
+          <h3 class="text-lg font-semibold" style="color: #1A3A34;">ToDo</h3>
+          <p class="mt-3 text-sm leading-7" style="color: #587D75;">予定に乗らないタスクも同じ場所で管理。日付やメモもそのまま残せます。</p>
+        </div>
+        <div class="rounded-[28px] border p-8" style="background-color: #FAFFFE; border-color: #C4D9D5;">
+          <h3 class="text-lg font-semibold" style="color: #1A3A34;">メモ</h3>
+          <p class="mt-3 text-sm leading-7" style="color: #587D75;">予定に紐づくメモも、独立したノートも、同じワークスペースに保存できます。</p>
+        </div>
+        <div class="rounded-[28px] border p-8" style="background-color: #FAFFFE; border-color: #C4D9D5;">
+          <h3 class="text-lg font-semibold" style="color: #1A3A34;">ブックマーク</h3>
+          <p class="mt-3 text-sm leading-7" style="color: #587D75;">よく使う URL や業務リンクも、予定の近くに置いたまま使えます。</p>
+        </div>
+        <div class="rounded-[28px] border p-8" style="background-color: #FAFFFE; border-color: #C4D9D5;">
+          <h3 class="text-lg font-semibold" style="color: #1A3A34;">横断検索</h3>
+          <p class="mt-3 text-sm leading-7" style="color: #587D75;">予定・メモ・ToDo・リンクをまとめて検索。保存先を思い出す必要がありません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans" class="px-6 py-24" style="background-color: #FAFFFE;">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: #0D9488;">Plans</p>
+        <h2 class="mt-3 text-3xl font-bold" style="color: #1A3A34;">無料プランと有料プランを提供しています</h2>
+        <p class="mt-4 text-base leading-7" style="color: #587D75;">
+          有料プランはソフトウェア機能の利用料金です。寄付、チップ、クラウドファンディング支援ではありません。
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-[32px] border p-8" style="border-color: #C4D9D5; background-color: #F2F8F7;">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-semibold" style="color: #1A3A34;">konbu Free</h3>
+            <span class="rounded-full px-3 py-1 text-xs font-semibold uppercase" style="background-color: #E6F0EE; color: #0D9488;">Free</span>
+          </div>
+          <p class="mt-4 text-sm leading-7" style="color: #587D75;">
+            基本的なワークスペース機能を無料で利用できます。登録後すぐに使い始められます。
+          </p>
+          <ul class="mt-6 space-y-3 text-sm" style="color: #1A3A34;">
+            {freeFeatures.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-[#0D9488]">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-[32px] border p-8" style="border-color: #0D9488; background-color: #FAFFFE;">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-semibold" style="color: #1A3A34;">konbu Pro</h3>
+            <span class="rounded-full px-3 py-1 text-xs font-semibold uppercase text-white" style="background-color: #0D9488;">Paid</span>
+          </div>
+          <div class="mt-4 flex items-end gap-3">
+            <div class="text-3xl font-bold" style="color: #1A3A34;">¥980</div>
+            <div class="pb-1 text-sm" style="color: #587D75;">/ 月</div>
+          </div>
+          <p class="mt-2 text-sm leading-7" style="color: #587D75;">
+            年額は <strong style="color: #1A3A34;">¥9,800 / 年</strong>。月額換算で約 17% お得です。
+          </p>
+          <p class="mt-4 text-sm leading-7" style="color: #587D75;">
+            AI と外部連携を中心としたプレミアム機能を追加します。購入画面では請求間隔と更新条件を明示します。
+          </p>
+          <ul class="mt-6 space-y-3 text-sm" style="color: #1A3A34;">
+            {paidFeatures.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-[#0D9488]">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-8 rounded-2xl p-4 text-sm leading-7" style="background-color: #F2F8F7; color: #587D75;">
+            決済は konbu Pro のアクセス料金にのみ使用されます。第三者のための送金、資金保管、決済代行には使用しません。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="https://konbu-cloud.codenica.dev"
+          class="inline-flex items-center rounded-lg px-7 py-3 text-base font-medium text-white transition-colors"
+          style="background-color: #0D9488;"
+          onmouseover="this.style.backgroundColor='#0B7F74'"
+          onmouseout="this.style.backgroundColor='#0D9488'"
+        >
+          クラウド版で確認する
+        </a>
+        <a href="/billing" class="text-sm font-medium underline-offset-4 hover:underline" style="color: #1A3A34;">
+          料金・返金・解約ポリシーを見る
         </a>
       </div>
     </div>
-
-    <div class="max-w-4xl mx-auto mt-16 grid gap-6">
-      <img src="/hero-chat.png" alt="konbu AI代理人チャット" class="rounded-2xl shadow-xl" style="border: 1px solid #C4D9D5;" />
-      <img src="/hero.png" alt="konbu 情報ワークスペース" class="rounded-2xl shadow-xl" style="border: 1px solid #C4D9D5;" />
-    </div>
   </section>
 
-  <!-- Features -->
-  <section class="py-24 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4" style="color: #1A3A34; word-break: keep-all;">予定を軸に、必要なものをひとつに</h2>
-      <p class="text-center mb-16" style="color: #8BACA5; word-break: keep-all;">スケジュール帳として使いながら、メモやToDoも同じ情報としてつながる。</p>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- AI Chat -->
-        <div class="p-8 rounded-2xl sm:col-span-2 lg:col-span-3" style="background-color: #FAFFFE; border: 1px solid #0D9488;">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: #E6F0EE;">
-            <svg class="w-6 h-6" style="color: #0D9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2" style="color: #1A3A34;">AIアシスタント</h3>
-          <p style="color: #8BACA5;">「明日の予定は？」「来週の空きある？」と聞けば、確認も登録もAIがやる。</p>
+  <section class="px-6 py-24">
+    <div class="mx-auto max-w-6xl rounded-[32px] border p-8 sm:p-10" style="border-color: #C4D9D5; background-color: #FAFFFE;">
+      <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: #0D9488;">Policies</p>
+          <h2 class="mt-3 text-3xl font-bold" style="color: #1A3A34;">購入前に確認できる情報</h2>
+          <p class="mt-4 text-base leading-7" style="color: #587D75;">
+            お問い合わせ、プライバシー、利用規約、料金・返金・解約ポリシーを公開しています。
+            Stripe での決済前に、提供内容とルールを確認できます。
+          </p>
         </div>
-
-        <!-- Calendar -->
-        <div class="p-8 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: #E6F0EE;">
-            <svg class="w-6 h-6" style="color: #0D9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2" style="color: #1A3A34;">カレンダー</h3>
-          <p style="color: #8BACA5;">予定を見る場所。月表示で管理できて、毎日の軸になる。</p>
-        </div>
-
-        <!-- ToDo -->
-        <div class="p-8 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: #E6F0EE;">
-            <svg class="w-6 h-6" style="color: #0D9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2" style="color: #1A3A34;">ToDo</h3>
-          <p style="color: #8BACA5;">予定に乗らない細かいやることも、同じ場所にそのまま置ける。</p>
-        </div>
-
-        <!-- Memo -->
-        <div class="p-8 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: #E6F0EE;">
-            <svg class="w-6 h-6" style="color: #0D9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2" style="color: #1A3A34;">メモ</h3>
-          <p style="color: #8BACA5;">予定にぶら下がるメモも、関係ない走り書きもそのまま残せる。</p>
-        </div>
-
-        <!-- Bookmarks -->
-        <div class="p-8 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: #E6F0EE;">
-            <svg class="w-6 h-6" style="color: #0D9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2" style="color: #1A3A34;">ブックマーク</h3>
-          <p style="color: #8BACA5;">資料やよく使うURLも、スケジュール帳の外に追い出さなくていい。</p>
-        </div>
-
-        <!-- Search -->
-        <div class="p-8 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: #E6F0EE;">
-            <svg class="w-6 h-6" style="color: #0D9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2" style="color: #1A3A34;">横断検索</h3>
-          <p style="color: #8BACA5;">予定・メモ・ToDo・リンクをまとめて引ける。「どこに置いたか」で迷わない。</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <a href="/privacy" class="rounded-2xl border p-5 transition-colors hover:bg-[#F2F8F7]" style="border-color: #C4D9D5;">
+            <div class="font-semibold" style="color: #1A3A34;">プライバシーポリシー</div>
+            <div class="mt-2 text-sm leading-6" style="color: #587D75;">収集する情報、利用目的、保存と削除について。</div>
+          </a>
+          <a href="/terms" class="rounded-2xl border p-5 transition-colors hover:bg-[#F2F8F7]" style="border-color: #C4D9D5;">
+            <div class="font-semibold" style="color: #1A3A34;">利用規約</div>
+            <div class="mt-2 text-sm leading-6" style="color: #587D75;">サービス利用条件、禁止事項、アカウント運用について。</div>
+          </a>
+          <a href="/billing" class="rounded-2xl border p-5 transition-colors hover:bg-[#F2F8F7]" style="border-color: #C4D9D5;">
+            <div class="font-semibold" style="color: #1A3A34;">料金・返金・解約</div>
+            <div class="mt-2 text-sm leading-6" style="color: #587D75;">有料プランの請求、解約、返金申請の取り扱い。</div>
+          </a>
+          <a href="/contact" class="rounded-2xl border p-5 transition-colors hover:bg-[#F2F8F7]" style="border-color: #C4D9D5;">
+            <div class="font-semibold" style="color: #1A3A34;">お問い合わせ</div>
+            <div class="mt-2 text-sm leading-6" style="color: #587D75;">サポートフォームと一般的な問い合わせ窓口。</div>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Trust -->
-  <section class="py-24 px-6" style="background-color: #FAFFFE;">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-12" style="color: #1A3A34; word-break: keep-all;">安心して使える理由</h2>
-      <div class="grid sm:grid-cols-3 gap-8">
-        <div>
-          <div class="text-3xl mb-3">&#x1F4B0;</div>
-          <h3 class="font-semibold mb-1" style="color: #1A3A34;">ずっと無料</h3>
-          <p class="text-sm" style="color: #8BACA5;">基本機能に制限なし。<br />ずっと無料。</p>
-        </div>
-        <div>
-          <div class="text-3xl mb-3">&#x1F6AB;</div>
-          <h3 class="font-semibold mb-1" style="color: #1A3A34;">広告なし</h3>
-          <p class="text-sm" style="color: #8BACA5;">広告は一切なし。<br />集中を邪魔しない。</p>
-        </div>
-        <div>
-          <div class="text-3xl mb-3">&#x1F512;</div>
-          <h3 class="font-semibold mb-1" style="color: #1A3A34;">データはあなたのもの</h3>
-          <p class="text-sm" style="color: #8BACA5;">トラッキングなし。<br />セルフホストとエクスポートにも対応。</p>
-        </div>
+  <section class="px-6 py-24" style="background-color: #FAFFFE;">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold" style="color: #1A3A34;">今すぐ konbu を試す</h2>
+      <p class="mt-4 text-base leading-7" style="color: #587D75;">
+        無料プランから始められます。アカウント作成後に、有料プランの内容と料金を確認できます。
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          href="https://konbu-cloud.codenica.dev"
+          class="inline-flex items-center rounded-lg px-8 py-3.5 text-base font-medium text-white transition-colors"
+          style="background-color: #0D9488;"
+          onmouseover="this.style.backgroundColor='#0B7F74'"
+          onmouseout="this.style.backgroundColor='#0D9488'"
+        >
+          無料で始める
+        </a>
+        <a href="/contact" class="inline-flex items-center rounded-lg border px-8 py-3.5 text-base font-medium transition-colors hover:bg-white" style="border-color: #C4D9D5; color: #1A3A34;">
+          お問い合わせ
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Premium -->
-  <section class="py-24 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4" style="color: #1A3A34; word-break: keep-all;">もっと深く使う</h2>
-      <p class="mb-10" style="color: #8BACA5; word-break: keep-all;">サポーターになると、AIや外部連携が使い放題に。</p>
-      <div class="grid sm:grid-cols-3 gap-6 mb-10 text-left">
-        <div class="p-6 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="text-2xl mb-3">&#x1F4AC;</div>
-          <h3 class="font-semibold mb-1" style="color: #1A3A34;">自分のAIキーで無制限</h3>
-          <p class="text-sm" style="color: #8BACA5;">自分のAPIキーを設定すれば、好きなモデルを回数制限なしで使える。</p>
-        </div>
-        <div class="p-6 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="text-2xl mb-3">&#x1F5BC;</div>
-          <h3 class="font-semibold mb-1" style="color: #1A3A34;">画像添付</h3>
-          <p class="text-sm" style="color: #8BACA5;">メモにドラッグ&ドロップで画像を貼り付け。レシピや写真メモに。</p>
-        </div>
-        <div class="p-6 rounded-2xl" style="background-color: #FAFFFE; border: 1px solid #C4D9D5;">
-          <div class="text-2xl mb-3">&#x1F517;</div>
-          <h3 class="font-semibold mb-1" style="color: #1A3A34;">API / CLI / MCP</h3>
-          <p class="text-sm" style="color: #8BACA5;">外部ツールやAIエージェントからkonbuのデータにアクセス。自動化や連携に。</p>
-        </div>
-      </div>
-      <a href="https://ko-fi.com/codenica000" target="_blank" rel="noopener" class="inline-flex items-center font-medium text-white px-7 py-3 rounded-lg transition-colors text-base" style="background-color: #0D9488;" onmouseover="this.style.backgroundColor='#0B7F74'" onmouseout="this.style.backgroundColor='#0D9488'">
-        サポーターになる
-      </a>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-24 px-6" style="background-color: #FAFFFE;">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4" style="color: #1A3A34; word-break: keep-all;">まとめ始めよう</h2>
-      <p class="mb-8" style="color: #8BACA5; word-break: keep-all;">アカウント作成は30秒。カード登録は不要。</p>
-      <a href="https://konbu-cloud.codenica.dev" class="inline-flex items-center font-medium text-white px-8 py-3.5 rounded-lg transition-colors text-base" style="background-color: #0D9488;" onmouseover="this.style.backgroundColor='#0B7F74'" onmouseout="this.style.backgroundColor='#0D9488'">
-        無料で始める
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 px-6" style="border-top: 1px solid #C4D9D5;">
-    <div class="max-w-6xl mx-auto flex items-center justify-between text-sm" style="color: #8BACA5;">
-      <span>&copy; 2026 konbu</span>
-    </div>
-  </footer>
+  <SiteFooter />
 </Layout>

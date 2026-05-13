@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+---
+
+<Layout
+  title="料金・返金・解約ポリシー | konbu"
+  description="konbu の有料プランに関する料金、返金、解約の取り扱いを説明します。"
+  path="/billing"
+>
+  <SiteHeader />
+
+  <main class="px-6 pb-20 pt-32">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="text-4xl font-bold" style="color: #1A3A34;">料金・返金・解約ポリシー</h1>
+      <div class="mt-10 space-y-10 text-sm leading-7" style="color: #587D75;">
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">1. 対象商品</h2>
+          <p class="mt-3">
+            本ポリシーは、konbu の有料プランに適用されます。決済はオンラインで提供されるソフトウェア機能へのアクセス料金です。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">2. 料金表示</h2>
+          <p class="mt-3">
+            konbu Pro の標準価格は、月額
+            <strong style="color: #1A3A34;">¥980</strong>
+            または年額
+            <strong style="color: #1A3A34;">¥9,800</strong>
+            です。購入画面には選択した請求間隔、更新条件、適用価格が表示されます。購入前に内容を確認したうえで決済してください。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">3. 解約</h2>
+          <p class="mt-3">
+            有料プランはいつでも解約できます。解約した場合、次回の更新以降の請求は停止されます。
+            すでに開始している利用期間については、その期間の終了までアクセスが継続します。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">4. 返金</h2>
+          <p class="mt-3">
+            初回購入については、プラン選択ミス、重複請求、明確な誤請求、またはサービス提供上の重大な問題があった場合に、
+            請求日から 14 日以内であれば返金申請を受け付けます。更新済みの期間については、法令上必要な場合または当方の誤請求を除き、
+            原則として日割り返金は行いません。
+            返金を希望する場合は、請求日から 14 日以内に
+            <a href="/contact" class="underline-offset-4 hover:underline" style="color: #1A3A34;">お問い合わせページ</a>
+            の案内に従って連絡してください。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold" style="color: #1A3A34;">5. 不正利用</h2>
+          <p class="mt-3">
+            不正利用、利用規約違反、または第三者のための決済代行を目的とした利用が確認された場合、決済の取消しまたはアカウント制限を行うことがあります。
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <SiteFooter />
+</Layout>
